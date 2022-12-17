@@ -11,6 +11,12 @@ export class PrismaNotificationRepository implements NotificationRepository {
     private prismaService: PrismaService
   ) {}
 
+  async list(): Promise<any> {
+    const notifications = await this.prismaService.notification.findMany();
+
+    return notifications;
+  }
+
   async create(notification: Notification): Promise<void> {
     await this.prismaService.notification.create({
       data: {

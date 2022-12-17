@@ -4,6 +4,10 @@ import { NotificationRepository } from '../../src/application/repositories/notif
 
 export class InMemoryNotificationRepository implements NotificationRepository {
   public notifications: Notification[] = [];
+  
+  async list(): Promise<Notification[]> {
+    return this.notifications;
+  }
 
   async create(notification: Notification) {
     this.notifications.push(notification);
